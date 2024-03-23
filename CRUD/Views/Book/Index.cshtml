@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CRUD.Models.Books>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "", new {@class="btn btn-success"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.bookName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.bookName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
